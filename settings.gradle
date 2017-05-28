@@ -1,3 +1,6 @@
-include ':core', ':log', ':router'
+include ':core'
+include ':log'
+include ':router'
+include ':router-regex'
 
 rootProject.children.each {it.name = "lambda-base-" + it.name}
