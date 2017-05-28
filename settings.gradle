@@ -1,1 +1,3 @@
-include ':core'
+include ':core', ':log'
+
+rootProject.children.each {it.name = "lambda-base-" + it.name}

@@ -25,7 +25,7 @@ buildscript {
 }
 
 allprojects {
-    group 'fi.oulumo.lambda.base'
+    group 'fi.oulumo.lambda'
     version '0.13.0'
 
     repositories {
