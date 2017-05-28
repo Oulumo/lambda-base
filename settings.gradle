@@ -4,5 +4,6 @@ include ':router'
 include ':router-regex'
 include ':security'
 include ':apigateway'
+include ':authenticator'
 
 rootProject.children.each {it.name = "lambda-base-" + it.name}
