@@ -1,0 +1,56 @@
+{
+  "resource": "/{proxy+}",
+  "path": "/main/login",
+  "httpMethod": "GET",
+  "headers": {
+    "Accept": "*/*",
+    "Accept-Encoding": "gzip, deflate, sdch, br",
+    "Accept-Language": "en,en-US;q=0.8,hu;q=0.6,fi;q=0.4",
+    "Auth": "eyJraWQiOiJMdW1vTkctMjAxNjA2MThUMjAwMDQ3KzAzMDAiLCJhbGciOiJFUzM4NCJ9.eyJpc3MiOiJMdW1vTkd2MSIsImF1ZCI6Ikx1bW9OR0NsaWVudHMiLCJleHAiOjE0NzY0MTI3MjAsImp0aSI6Ind6eDV2U1hiZkdVV21hMFJKVnNqa1EiLCJpYXQiOjE0NzYzOTQ3MjAsIm5iZiI6MTQ3NjM5NDYwMCwic3ViIjoiN2EzZjI0YjMtY2NhNy00ZWEzLWIyY2UtMzU4NDUxMTkyNTI1IiwiZGV2aWNlIjoiNzlmODU0MmUtMjU0Ni00Mjk1LWE3YTUtNjkzNDAwMzM1ZTU5Iiwicm9sZSI6IkFkbWluaXN0cmF0b3IiLCJjb21wYW55IjoiMWZmYjU2NTctMGE2Mi00ZWE1LTg0ZGEtMDRiZDIyNGRhZjY1In0.FYlLx1qNQu2zzJ6qOQ2OY_Oo9IBFs_-qxXAoQRHfI87J-wt634UEE7SD1yf9v0_Rsl54zyS6sEtAqU-YyoEpbwrRV3wKgnx27wcfI8xurS0GHoOuM3awd6RQO9thNKk6",
+    "Cache-Control": "no-cache",
+    "CloudFront-Forwarded-Proto": "https",
+    "CloudFront-Is-Desktop-Viewer": "true",
+    "CloudFront-Is-Mobile-Viewer": "false",
+    "CloudFront-Is-SmartTV-Viewer": "false",
+    "CloudFront-Is-Tablet-Viewer": "false",
+    "CloudFront-Viewer-Country": "FI",
+    "Host": "5nw0kdktwa.execute-api.eu-central-1.amazonaws.com",
+    "Postman-Token": "fa7f8f3c-bca2-f3a8-126d-006bf37263c1",
+    "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/53.0.2785.116 Safari/537.36",
+    "Via": "1.1 3fe626ff9b8e73cd85a4a1e019abf439.cloudfront.net (CloudFront)",
+    "X-Amz-Cf-Id": "euBr7kdSzugNZd218JrmZ6auqhMW76SrqJFVKD6IqqcDmlddU5NveQ==",
+    "X-Forwarded-For": "87.93.19.143, 205.251.218.78",
+    "X-Forwarded-Port": "443",
+    "X-Forwarded-Proto": "https"
+  },
+  "queryStringParameters": {
+    "user": "johndoe"
+  },
+  "pathParameters": {
+    "proxy": "main/login"
+  },
+  "stageVariables": null,
+  "requestContext": {
+    "accountId": "345344921137",
+    "resourceId": "xo4xvc",
+    "stage": "test",
+    "requestId": "cbf567d9-93b5-11e6-8e5c-eb0c222abd5d",
+    "identity": {
+      "cognitoIdentityPoolId": null,
+      "accountId": null,
+      "cognitoIdentityId": null,
+      "caller": null,
+      "apiKey": null,
+      "sourceIp": "87.93.19.143",
+      "cognitoAuthenticationType": null,
+      "cognitoAuthenticationProvider": null,
+      "userArn": null,
+      "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/53.0.2785.116 Safari/537.36",
+      "user": null
+    },
+    "resourcePath": "/{proxy+}",
+    "httpMethod": "GET",
+    "apiId": "5nw0kdktwa"
+  },
+  "body": null
+}

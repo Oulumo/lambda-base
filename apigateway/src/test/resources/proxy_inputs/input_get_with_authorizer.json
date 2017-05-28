@@ -1,0 +1,59 @@
+{
+  "resource": "/{proxy+}",
+  "path": "/main/login",
+  "httpMethod": "GET",
+  "headers": {
+    "Accept": "*/*",
+    "Accept-Encoding": "gzip, deflate, sdch, br",
+    "Accept-Language": "en,en-US;q=0.8,hu;q=0.6,fi;q=0.4",
+    "Auth": "eyJraWQiOiJMdW1vTkctMjAxNjA2MThUMjAwMDQ3KzAzMDAiLCJhbGciOiJFUzM4NCJ9.eyJpc3MiOiJMdW1vTkd2MSIsImF1ZCI6Ikx1bW9OR0NsaWVudHMiLCJleHAiOjE0NzY2NTkxMDAsImp0aSI6InBNS1RVU0Vub1dGUkhpNWtjV19QYmciLCJpYXQiOjE0NzY2NDExMDAsIm5iZiI6MTQ3NjY0MDk4MCwic3ViIjoiN2EzZjI0YjMtY2NhNy00ZWEzLWIyY2UtMzU4NDUxMTkyNTI1IiwiZGV2aWNlIjoiZjFkMGFkZjUtODM2Mi00NjdmLWEzMDctN2Q5YTg5ZjcwZWYyIiwicm9sZSI6IkFkbWluaXN0cmF0b3IiLCJjb21wYW55IjoiMWZmYjU2NTctMGE2Mi00ZWE1LTg0ZGEtMDRiZDIyNGRhZjY1In0.EFMk7ycnoonzVajCawMyFfcVguxTT60ciaHbLCoQO0t0IKiqrCRxEgASXP9ODdw72ztq7_irneKxnUs4qWfPhbILdRVMGwPjgec40Nz_5xcuxuSMGKuTphyxM9q8qY0n",
+    "Cache-Control": "no-cache",
+    "CloudFront-Forwarded-Proto": "https",
+    "CloudFront-Is-Desktop-Viewer": "true",
+    "CloudFront-Is-Mobile-Viewer": "false",
+    "CloudFront-Is-SmartTV-Viewer": "false",
+    "CloudFront-Is-Tablet-Viewer": "false",
+    "CloudFront-Viewer-Country": "FI",
+    "Host": "5nw0kdktwa.execute-api.eu-central-1.amazonaws.com",
+    "Postman-Token": "c329aa3e-cc7b-e2e5-0d6b-61f43481b452",
+    "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/53.0.2785.116 Safari/537.36",
+    "Via": "1.1 01ac62666cfe2c2ebeae9a4c98ba1d07.cloudfront.net (CloudFront)",
+    "X-Amz-Cf-Id": "Jcp0RNrsXOf1xftDjWw4Os4YgCzT49ZUK2BC0EQfO5MjyYYB5Uy-Bw==",
+    "X-Forwarded-For": "87.93.19.143, 205.251.218.60",
+    "X-Forwarded-Port": "443",
+    "X-Forwarded-Proto": "https"
+  },
+  "queryStringParameters": {
+    "user": "johndoe"
+  },
+  "pathParameters": {
+    "proxy": "main/login"
+  },
+  "stageVariables": null,
+  "requestContext": {
+    "accountId": "345344921137",
+    "resourceId": "xo4xvc",
+    "stage": "test",
+    "authorizer": {
+      "principalId": "7a3f24b3-cca7-4ea3-b2ce-358451192525::pMKTUSEnoWFRHi5kcW_Pbg::f1d0adf5-8362-467f-a307-7d9a89f70ef2::Administrator::1ffb5657-0a62-4ea5-84da-04bd224daf65"
+    },
+    "requestId": "4106d65c-93cb-11e6-b48c-af9fac9e55b2",
+    "identity": {
+      "cognitoIdentityPoolId": null,
+      "accountId": null,
+      "cognitoIdentityId": null,
+      "caller": null,
+      "apiKey": null,
+      "sourceIp": "87.93.19.143",
+      "cognitoAuthenticationType": null,
+      "cognitoAuthenticationProvider": null,
+      "userArn": null,
+      "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/53.0.2785.116 Safari/537.36",
+      "user": null
+    },
+    "resourcePath": "/{proxy+}",
+    "httpMethod": "GET",
+    "apiId": "5nw0kdktwa"
+  },
+  "body": null
+}

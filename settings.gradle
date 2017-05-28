@@ -3,5 +3,6 @@ include ':log'
 include ':router'
 include ':router-regex'
 include ':security'
+include ':apigateway'
 
 rootProject.children.each {it.name = "lambda-base-" + it.name}

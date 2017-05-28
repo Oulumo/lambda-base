@@ -1,0 +1,16 @@
+dependencies {
+    compile project(':lambda-base-core')
+    compile project(':lambda-base-log')
+    compile project(':lambda-base-router')
+
+    compile group: 'com.google.code.gson', name: 'gson', version: gsonVersion
+    compile group: 'joda-time', name: 'joda-time', version: joda_time_version
+
+    // Dagger-2
+    compile group: 'com.google.dagger', name: 'dagger', version: daggerVersion
+    apt  group: 'com.google.dagger', name: 'dagger-compiler', version: daggerVersion
+
+    // TEST DEPENDENCIES
+    testCompile group: 'junit', name: 'junit', version: jUnitVersion
+    testCompile group: 'org.hamcrest', name: 'hamcrest-library', version: hamcrestVersion
+}
