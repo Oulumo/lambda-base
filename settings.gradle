@@ -6,5 +6,6 @@ include ':security'
 include ':apigateway'
 include ':authenticator'
 include ':s3'
+include ':dynamodb'
 
 rootProject.children.each {it.name = "lambda-base-" + it.name}
