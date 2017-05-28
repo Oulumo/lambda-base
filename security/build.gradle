@@ -1,6 +1,8 @@
 dependencies {
     compile project(':lambda-base-core')
 
+    compile group: 'com.amazonaws', name: 'aws-java-sdk-kms', version: awsJavaSdkVersion
+
     // Dagger-2
     compile group: 'com.google.dagger', name: 'dagger', version: daggerVersion
     apt  group: 'com.google.dagger', name: 'dagger-compiler', version: daggerVersion

@@ -10,7 +10,7 @@ import javax.inject.Singleton;
  * @author Zsolt Homorodi (zsolt.homorodi@oulumo.com)
  */
 @Module
-public class SecurityModule {
+public class PasswordEncoderModule {
     @Provides
     @Singleton
     public BCryptPasswordEncoder providePasswordEncoder() {
