@@ -1,0 +1,24 @@
+repositories {
+    maven {
+        url "http://dynamodb-local.s3-website-us-west-2.amazonaws.com/release/"
+    }
+}
+
+dependencies {
+    compile project(':lambda-base-apigateway')
+    compile project(':lambda-base-s3')
+    compile project(':lambda-base-dynamodb')
+
+    compile group: 'com.amazonaws', name: 'DynamoDBLocal', version: '1.10.5.1'
+    compile('io.findify:s3mock_2.12:0.2.2'){
+        exclude group: 'com.google.guava', module: 'guava'
+    }
+
+    compile group: 'junit', name: 'junit', version: jUnitVersion
+    compile group: 'org.hamcrest', name: 'hamcrest-library', version: hamcrestVersion
+    compile group: 'org.slf4j', name: 'slf4j-api', version: slf4jVersion
+    compile group: 'org.skyscreamer', name: 'jsonassert', version: '1.5.0'
+
+    testCompile group: 'ch.qos.logback', name: 'logback-classic', version: logbackVersion
+    testAptCompile group: 'com.google.dagger', name: 'dagger-compiler', version: daggerVersion
+}
