@@ -1,0 +1,66 @@
+buildscript {
+    ext {
+        logbackLoglevel='DEBUG'
+
+        gsonVersion='2.8.0'
+        joda_time_version='2.9.4'
+        commonsIoVersion='2.5'
+        slf4jVersion='1.7.25'
+        logbackVersion='1.2.3'
+        daggerVersion='2.10'
+
+        awsLambdaCoreVersion='1.1.0'
+        awsLambdaEventsVersion='1.3.0'
+        awsJavaSdkVersion='1.11.136'
+
+        jUnitVersion='4.12'
+        hamcrestVersion='1.3'
+    }
+    repositories {
+	jcenter()
+    }
+    dependencies {
+        classpath "net.sf.gapt:apt:1"
+    }
+}
+
+allprojects {
+    group 'fi.oulumo.lambda.base'
+    version '0.13.0'
+
+    repositories {
+	jcenter()
+    }
+}
+
+subprojects {
+    ext {
+        asciiDocOutputDir = file("${buildDir}/asciidoc")
+    }
+
+    apply plugin: 'java'
+    apply plugin: "net.sf.gapt"
+
+    sourceCompatibility = 1.8
+    targetCompatibility = 1.8
+
+    test {
+        testLogging {
+            exceptionFormat = 'full'
+        }
+    }
+
+    compileJava.dependsOn(processResources)
+
+    processResources {
+        filesMatching('**/logback.xml') {
+            filter {
+                it.replace('${logback.loglevel}', logbackLoglevel)
+            }
+        }
+    }
+}
+
+task wrapper(type: Wrapper) {
+    gradleVersion = '3.5'
+}

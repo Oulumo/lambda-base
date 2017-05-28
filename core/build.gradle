@@ -1,0 +1,20 @@
+dependencies {
+    // AWS Java SDK dependencies (overriding the default old ones from Lambda dependencies)
+    compile group: 'com.amazonaws', name: 'aws-java-sdk-core', version: awsJavaSdkVersion
+
+    // AWS Lambda dependencies
+    compile group: 'com.amazonaws', name: 'aws-lambda-java-core', version: awsLambdaCoreVersion
+    compile group: 'com.amazonaws', name: 'aws-lambda-java-events', version: awsLambdaEventsVersion
+
+    // Dagger-2
+    compile group: 'com.google.dagger', name: 'dagger', version: daggerVersion
+    apt  group: 'com.google.dagger', name: 'dagger-compiler', version: daggerVersion
+
+    // Other dependencies
+    compile group: 'commons-io', name: 'commons-io', version: commonsIoVersion
+    compile group: 'joda-time', name: 'joda-time', version: joda_time_version
+
+    // TEST DEPENDENCIES
+    testCompile group: 'junit', name: 'junit', version: jUnitVersion
+    testCompile group: 'org.hamcrest', name: 'hamcrest-library', version: hamcrestVersion
+}
