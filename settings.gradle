@@ -8,5 +8,6 @@ include ':authenticator'
 include ':s3'
 include ':dynamodb'
 include ':tester'
+include ':example'
 
 rootProject.children.each {it.name = "lambda-base-" + it.name}
