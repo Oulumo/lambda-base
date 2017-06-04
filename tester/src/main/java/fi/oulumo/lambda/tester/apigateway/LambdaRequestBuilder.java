@@ -69,13 +69,13 @@ public class LambdaRequestBuilder {
         }
     }
 
-    protected LambdaRequestBuilder withHeader(String name, String value) {
+    public LambdaRequestBuilder withHeader(String name, String value) {
         this.headers.put(name, value);
 
         return this;
     }
 
-    protected LambdaRequestBuilder withStageVariable(String name, String value) {
+    public LambdaRequestBuilder withStageVariable(String name, String value) {
         this.stageVariables.put(name, value);
 
         return this;
