@@ -1,3 +1,9 @@
+ext {
+    versionMajor = 0
+    versionMinor = 13
+    versionPoint = 2
+}
+
 buildscript {
     ext {
         logbackLoglevel='DEBUG'
@@ -21,12 +27,13 @@ buildscript {
     }
     dependencies {
         classpath "net.sf.gapt:apt:1"
+        classpath 'com.jfrog.bintray.gradle:gradle-bintray-plugin:1.7.3'
     }
 }
 
 allprojects {
     group 'fi.oulumo.lambda'
-    version '0.13.0'
+    version computeVersion()
 
     repositories {
 	    jcenter()
@@ -38,7 +45,9 @@ subprojects {
         asciiDocOutputDir = file("${buildDir}/asciidoc")
     }
 
+    apply plugin: 'maven'
     apply plugin: 'java'
+    apply plugin: 'com.jfrog.bintray'
     apply plugin: "net.sf.gapt"
 
     sourceCompatibility = 1.8
@@ -59,8 +68,59 @@ subprojects {
             }
         }
     }
+
+    task sourceJar(type: Jar) {
+        from sourceSets.main.allSource
+        classifier = 'sources'
+    }
+
+    task javadocJar(type: Jar, dependsOn: javadoc) {
+        from javadoc.destinationDir
+        classifier = 'javadoc'
+    }
+
+    // Add the sourceJars to non-extractor modules
+    artifacts {
+        archives jar
+        archives sourceJar
+        archives javadocJar
+    }
+
+    bintray {
+        user = "${bintray_user}"
+        key = "${bintray_apikey}"
+        configurations = ['archives']
+        dryRun = false
+        publish = true
+        override = true
+
+        pkg {
+            repo = 'lambda-base'
+            name = "fi.oulumo.lambda:${project.name}"
+            desc = "${project.name}"
+            labels = ['lambda', 'aws-lambda', 'serverless']
+            publicDownloadNumbers = true
+
+            githubRepo = 'Oulumo/lambda-base'
+            githubReleaseNotesFile = 'README.adoc'
+
+            version {
+                name = computeVersion()
+                released  = new Date()
+                licenses = ['Apache-2.0']
+                websiteUrl = 'https://github.com/Oulumo/lambda-base'
+                issueTrackerUrl = 'https://github.com/Oulumo/lambda-base/issues'
+                vcsUrl = 'https://github.com/Oulumo/lambda-base.git'
+            }
+        }
+    }
 }
 
 task wrapper(type: Wrapper) {
     gradleVersion = '3.5'
+}
+
+def computeVersion() {
+    // Version format: <major>.<minor>.<point>.<build>
+    return String.format('%d.%d.%d.%d', versionMajor, versionMinor, versionPoint, Integer.valueOf(System.env.BUILD_NUMBER ?: 0))
 }
