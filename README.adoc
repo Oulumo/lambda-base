@@ -1,0 +1,101 @@
+= Lambda Base
+
+Lambda Base makes it easier to create Java based https://aws.amazon.com/lambda/[Lambda functions on AWS].
+The main focus is on lambdas used with https://aws.amazon.com/api-gateway/[Amazon API Gateway], but there are
+base classes for creating authenticator lambdas (also used with API Gateway, in case custom authentication
+is required) and https://aws.amazon.com/s3/[S3] event lambdas too.
+
+== Lambda components for API Gateway
+First we need to create a Handler component. This represents a REST endpoint:
+
+[source,java,indent=0]
+----
+	import fi.oulumo.lambda.apigateway.handler.AbstractLambdaRequestHandler;
+	import fi.oulumo.lambda.apigateway.handler.HandlerContext;
+	import fi.oulumo.lambda.apigateway.handler.HandlerResponse;
+	import fi.oulumo.lambda.example.dto.Sentence;
+	import fi.oulumo.lambda.log.ILogger;
+	import fi.oulumo.lambda.log.LoggerFactory;
+
+	public class EchoHandler extends AbstractLambdaRequestHandler<Sentence, Sentence> {
+	    private static final ILogger log = LoggerFactory.createLogger(EchoHandler.class);
+
+	    @Override
+	    protected HandlerResponse<Sentence> doHandleLambdaRequest(Sentence input) {
+	        HandlerContext context = getHandlerContext();
+
+	        log.debug("Echo handler called");
+	        log.debug(context.getAwsContext().getInvokedFunctionArn());
+
+	        return new HandlerResponse<>(input);
+	    }
+
+	    @Override
+    	public Class<Sentence> getInputClass() {
+        	return Sentence.class;
+	    }
+	}
+----
+
+Next we create the request manager. This component links together the router
+to be used, with route definitions. Each route definition consists of a path
+(possibly with path variables) and a Handler.
+
+[source,java,indent=0]
+----
+	import com.google.gson.Gson;
+	import fi.oulumo.lambda.apigateway.AbstractLambdaRequestManager;
+	import fi.oulumo.lambda.apigateway.exception.IErrorTranslator;
+	import fi.oulumo.lambda.apigateway.handler.ILambdaRequestHandler;
+	import fi.oulumo.lambda.core.context.IHandlerContextDecorator;
+	import fi.oulumo.lambda.router.Router;
+	import fi.oulumo.lambda.router.regex.RegexMatchHelper;
+	import fi.oulumo.lambda.router.regex.RegexMatcher;
+	import fi.oulumo.lambda.router.route.HttpMethod;
+
+	import javax.inject.Inject;
+
+	public class ExampleRequestManager extends AbstractLambdaRequestManager<RegexMatchHelper> {
+	    @Inject
+	    public ExampleRequestManager(Gson gson, IErrorTranslator errorTranslator, IHandlerContextDecorator handlerContextDecorator) {
+    	    super(gson, errorTranslator, handlerContextDecorator);
+    	}
+
+    	@Override
+    	protected Router<RegexMatchHelper, ILambdaRequestHandler> setupRouter() {
+        	Router<RegexMatchHelper, ILambdaRequestHandler> retValue = new Router<>(new RegexMatcher<ILambdaRequestHandler>());
+
+        	retValue.defineRoute(HttpMethod.Get, "/info", new InfoHandler());
+        	retValue.defineRoute(HttpMethod.Get, "/hello/:name", new HelloHandler());
+        	retValue.defineRoute(HttpMethod.Get, "/echo", new EchoHandler());
+
+        	return retValue;
+    	}
+
+	}
+----
+
+
+The route `/hello/:name` demonstrates how to define path variables. In the handler, the actual value can be
+queried like this:
+
+[source,java,indent=0]
+----
+	HandlerContext context = getHandlerContext();
+	String groupIdParameter = context.getParameterValue(PARAMETER_GROUP_ID);
+----
+
+
+For a complete example please check the *example* directory.
+
+== Acknowledgements
+
+* BCrypt components were adapted from https://projects.spring.io/spring-security/[Spring Security] project, available using the following licenses:
+** Bcrypt, BCryptTests: Copyright (c) 2006 Damien Miller <djm@mindrot.org>, released under BSD license.
+** BCryptPasswordEncoder, BCryptPasswordEncoderTests: Copyright (c) 2016 Spring Security project, released under the http://www.apache.org/licenses/LICENSE-2.0.html[Apache 2.0 license].
+* AuthenticationResponse class was originally published in an Amazon blog post, and was made available under the http://www.apache.org/licenses/LICENSE-2.0.html[Apache 2.0 license].
+
+== License
+
+Lambda Base is Open Source software released under the
+http://www.apache.org/licenses/LICENSE-2.0.html[Apache 2.0 license].

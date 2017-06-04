@@ -1,6 +1,5 @@
 package fi.oulumo.lambda.example;
 
-
 import fi.oulumo.lambda.apigateway.handler.AbstractLambdaRequestHandler;
 import fi.oulumo.lambda.apigateway.handler.HandlerContext;
 import fi.oulumo.lambda.apigateway.handler.HandlerResponse;
