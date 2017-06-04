@@ -95,4 +95,19 @@ public class ExampleRequestRouterTest {
         assertThat(testResponse, is(withHttpCode(501)));
         assertThat(testResponse, is(withJsonContent("{\"error_message\":\"Requested resource / method is not implemented\"}")));
     }
+
+    @Test
+    public void helloTest() throws Exception {
+        LambdaRequestBuilder requestBuilder = new LambdaRequestBuilder();
+        LambdaRequest testRequest = requestBuilder
+                .withMethod(HttpMethod.Get)
+                .withPath("/hello/World")
+                .build();
+        TestResponse testResponse = requestTester.sendRequest(testRequest);
+
+        assertThat(testResponse, is(notNullValue()));
+        assertThat(testResponse, is(success()));
+        assertThat(testResponse, is(withHttpStatus(HttpStatus.OK)));
+        assertThat(testResponse, is(withJsonContent("{\"sentence\":\"Hello World!\"}")));
+    }
 }

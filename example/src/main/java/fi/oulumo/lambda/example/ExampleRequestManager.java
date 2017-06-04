@@ -28,6 +28,7 @@ public class ExampleRequestManager extends AbstractLambdaRequestManager<RegexMat
         retValue.defineRoute(HttpMethod.Get, "/info", new InfoHandler());
         retValue.defineRoute(HttpMethod.Get, "/error", new ErrorHandler());
         retValue.defineRoute(HttpMethod.Get, "/echo", new EchoHandler());
+        retValue.defineRoute(HttpMethod.Get, "/hello/:" + HelloHandler.PARAMETER_NAME, new HelloHandler());
 
         return retValue;
     }

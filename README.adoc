@@ -82,7 +82,7 @@ queried like this:
 [source,java,indent=0]
 ----
 	HandlerContext context = getHandlerContext();
-	String groupIdParameter = context.getParameterValue(PARAMETER_GROUP_ID);
+	String nameParameter = context.getParameterValue("name");
 ----
 
 
