@@ -58,10 +58,6 @@ test.doFirst {
     systemProperty "java.library.path", 'build/libs'
 }
 
-bintray {
-    configurations = []
-}
-
 def getDate() {
     def date = new Date()
     def formattedDate = date.format('HH:mm MMMM d, YYYY')

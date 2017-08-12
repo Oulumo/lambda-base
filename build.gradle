@@ -1,7 +1,7 @@
 ext {
     versionMajor = 0
-    versionMinor = 13
-    versionPoint = 2
+    versionMinor = 14
+    versionPoint = 0
 }
 
 buildscript {
@@ -47,7 +47,6 @@ subprojects {
 
     apply plugin: 'maven'
     apply plugin: 'java'
-    apply plugin: 'com.jfrog.bintray'
     apply plugin: "net.sf.gapt"
 
     sourceCompatibility = 1.8
@@ -68,6 +67,10 @@ subprojects {
             }
         }
     }
+}
+
+configure(subprojects - project(':lambda-base-example')) {
+    apply plugin: 'com.jfrog.bintray'
 
     task sourceJar(type: Jar) {
         from sourceSets.main.allSource
@@ -90,7 +93,7 @@ subprojects {
         user = "${bintray_user}"
         key = "${bintray_apikey}"
         configurations = ['archives']
-        dryRun = false
+        dryRun = !(project.hasProperty('pushBintray'))
         publish = true
         override = true
 
@@ -122,5 +125,9 @@ task wrapper(type: Wrapper) {
 
 def computeVersion() {
     // Version format: <major>.<minor>.<point>.<build>
-    return String.format('%d.%d.%d.%d', versionMajor, versionMinor, versionPoint, Integer.valueOf(System.env.BUILD_NUMBER ?: 0))
+    return String.format('%d.%d.%d.%d', versionMajor, versionMinor, versionPoint, getBuildNumber())
+}
+
+def getBuildNumber() {
+    return Integer.valueOf(System.env.BUILD_NUMBER ?: (System.env.BUILDKITE_BUILD_NUMBER ?: 0))
 }
