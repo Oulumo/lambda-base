@@ -1,9 +1,31 @@
-= Lambda Base
+image::https://api.bintray.com/packages/hazsetata/lambda-base/fi.oulumo.lambda%3Alambda-base-core/images/download.svg[link="https://bintray.com/hazsetata/lambda-base/fi.oulumo.lambda%3Alambda-base-core/_latestVersion"]
 
+= Lambda Base
 Lambda Base makes it easier to create Java based https://aws.amazon.com/lambda/[Lambda functions on AWS].
 The main focus is on lambdas used with https://aws.amazon.com/api-gateway/[Amazon API Gateway], but there are
 base classes for creating authenticator lambdas (also used with API Gateway, in case custom authentication
 is required) and https://aws.amazon.com/s3/[S3] event lambdas too.
+
+== Available from JCenter
+The JAR files are available in JCenter repository, by adding **lambda-base-** prefix to the module names. For
+example to include the **core** module in your code in Maven:
+
+[source]
+----
+<dependency>
+  <groupId>fi.oulumo.lambda</groupId>
+  <artifactId>lambda-base-core</artifactId>
+  <version>0.14.0.0</version>
+  <type>pom</type>
+</dependency>
+----
+
+To do the same in Gradle:
+
+[source,indent=0]
+----
+compile 'fi.oulumo.lambda:lambda-base-core:0.14.0.0'
+----
 
 == Lambda components for API Gateway
 First we need to create a Handler component. This represents a REST endpoint:
